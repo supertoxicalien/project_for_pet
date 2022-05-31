@@ -1,0 +1,241 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block banner_section %}
+	<!-- ===========Banner Section start Here========== -->
+	<section class="pageheader-section" style="background-image: url({% static 'images/pageheader/bg.jpg' %});">
+		<div class="container">
+            <div class="section-wrapper text-center text-uppercase">
+                <h2 class="pageheader-title">our blog posts</h2>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb justify-content-center mb-0">
+                      <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                      <li class="breadcrumb-item active" aria-current="page">blog</li>
+                    </ol>
+                </nav>
+            </div>
+		</div>
+	</section>
+	<!-- ===========Banner Section Ends Here========== -->
+{% endblock %}
+
+    
+{% block content %}
+	<!-- ===========Blog Section Start Here========== -->
+	<div class="blog-section padding-top padding-bottom aside-bg">
+		<div class="container">
+			<div class="section-wrapper">
+				<div class="row justify-content-center">
+					<div class="col-lg-8 col-12">
+						<article>
+                            {% for p in post_list %}
+							<div class="post-item-2">
+								<div class="post-inner">
+									<div class="post-thumb">
+										<a href="blog-single.html">
+											<img src="{{ p.image.url }}" alt="blog">
+										</a>
+									</div>
+									<div class="post-content">
+										<a href="blog-single.html">
+											<h2>{{ p.title }}</h2>
+										</a>
+										<ul class="lab-ul post-date">
+											<li><span><i class="icofont-ui-calendar"></i> {{ p.create_at }} </span></li>
+											<li><span><i class="icofont-user"></i><a href="#">Robot Smith</a></span> </li>
+											<li><span><i class="icofont-speech-comments"></i><a href="#">09 Comments</a></span></li>
+										</ul>
+										<p>{{ p.intro }}</p>
+                                        <a href="{% url 'detail' p.category.slug p.slug %}" class="default-button"><span>read more <i class="icofont-circled-right"></i></span></a>
+									</div>
+								</div>
+                                {% endfor %}
+							</div>
+							<!-- <div class="paginations"> -->
+								<ul class="default-pagination lab-ul">
+									<li>
+										<a href="#"><i class="icofont-rounded-left"></i></a>
+									</li>
+									<li>
+										<a href="#">01</a>
+									</li>
+									<li>
+										<a href="#" class="active">02</a>
+									</li>
+									<li>
+										<a href="#">03</a>
+									</li>
+									<li>
+										<a href="#"><i class="icofont-rounded-right"></i></a>
+									</li>
+								</ul>
+							<!-- </div> -->
+						</article>
+					</div>
+					<div class="col-lg-4 col-md-7 col-12">
+						<aside class="ps-lg-4">
+							<div class="widget widget-search">
+								<div class="widget-header">
+									<h5>Search Your keywords</h5>
+								</div>
+								<form action="{% url 'search' %}" class="search-wrapper">
+									<input type="text" name="s" placeholder="Search Here...">
+									<button type="submit"><i class="icofont-search-2"></i></button>
+								</form>
+							</div>
+
+							<div class="widget widget-category">
+								<div class="widget-header">
+									<h5>Post Categories</h5>
+								</div>
+								<ul class="lab-ul widget-wrapper list-bg-none">
+									<li>
+										<a href="#" class="d-flex flex-wrap justify-content-between"><span><i class="icofont-rounded-double-right"></i>Show all</span><span>18</span></a>
+									</li>
+									<li>
+										<a href="#" class="d-flex flex-wrap justify-content-between"><span><i class="icofont-rounded-double-right"></i>Business</span><span>20</span></a>
+									</li>
+									<li>
+										<a href="#" class="d-flex flex-wrap justify-content-between"><span><i class="icofont-rounded-double-right"></i>Creative</span><span>25</span></a>
+									</li>
+									<li>
+										<a href="#" class="d-flex flex-wrap justify-content-between"><span><i class="icofont-rounded-double-right"></i>Inspiation</span><span>30</span></a>
+									</li>
+									<li>
+										<a href="#" class="d-flex flex-wrap justify-content-between"><span><i class="icofont-rounded-double-right"></i>News</span><span>28</span></a>
+									</li>
+									<li>
+										<a href="#" class="d-flex flex-wrap justify-content-between"><span><i class="icofont-rounded-double-right"></i>Photography</span><span>20</span></a>
+									</li>
+									<li>
+										<a href="#" class="d-flex flex-wrap justify-content-between"><span><i class="icofont-rounded-double-right"></i>Smart</span><span>26</span></a>
+									</li>
+								</ul>
+							</div>
+
+							<div class="widget widget-post">
+								<div class="widget-header">
+									<h5>Recent Post</h5>
+								</div>
+								<ul class="lab-ul widget-wrapper">
+									<li class="d-flex flex-wrap justify-content-between">
+										<div class="post-thumb">
+											<a href="blog-single.html"><img src="assets/images/blog/p-post/01.jpg" alt="product"></a>
+										</div>
+										<div class="post-content ps-4">
+											<a href="blog-single.html">
+												<h6>Poor People’s Campaign Our Resources</h6>
+											</a>
+											<p>04 February 2019</p>
+										</div>
+									</li>
+									<li class="d-flex flex-wrap justify-content-between">
+										<div class="post-thumb">
+											<a href="blog-single.html"><img src="assets/images/blog/p-post/02.jpg" alt="product"></a>
+										</div>
+										<div class="post-content ps-4">
+											<a href="blog-single.html">
+												<h6>Boosting Social For NGO And Charities </h6>
+											</a>
+											<p>04 February 2019</p>
+										</div>
+									</li>
+									<li class="d-flex flex-wrap justify-content-between">
+										<div class="post-thumb">
+											<a href="blog-single.html"><img src="assets/images/blog/p-post/03.jpg" alt="product"></a>
+										</div>
+										<div class="post-content ps-4">
+											<a href="blog-single.html">
+												<h6>Poor People’s Campaign Our Resources</h6>
+											</a>
+											<p>04 February 2019</p>
+										</div>
+									</li>
+									<li class="d-flex flex-wrap justify-content-between">
+										<div class="post-thumb">
+											<a href="blog-single.html"><img src="assets/images/blog/p-post/04.jpg" alt="product"></a>
+										</div>
+										<div class="post-content ps-4">
+											<a href="blog-single.html">
+												<h6>Boosting Social For NGO And Charities</h6>
+											</a>
+											<p>04 February 2019</p>
+										</div>
+									</li>
+								</ul>
+							</div>
+
+							<div class="widget widget-instagram">
+								<div class="widget-header">
+									<h5>Instagram</h5>
+								</div>
+								<ul class="lab-ul widget-wrapper d-flex flex-wrap justify-content-center">
+									<li><a href="assets/images/instragram/01.jpg" data-rel="lightcase"><img src="assets/images/instragram/01.jpg" alt="instragram-img"></a></li>
+									<li><a href="assets/images/instragram/02.jpg" data-rel="lightcase"><img src="assets/images/instragram/02.jpg" alt="instragram-img"></a></li>
+									<li><a href="assets/images/instragram/03.jpg" data-rel="lightcase"><img src="assets/images/instragram/03.jpg" alt="instragram-img"></a></li>
+									<li><a href="assets/images/instragram/04.jpg" data-rel="lightcase"><img src="assets/images/instragram/04.jpg" alt="instragram-img"></a></li>
+									<li><a href="assets/images/instragram/05.jpg" data-rel="lightcase"><img src="assets/images/instragram/05.jpg" alt="instragram-img"></a></li>
+									<li><a href="assets/images/instragram/06.jpg" data-rel="lightcase"><img src="assets/images/instragram/06.jpg" alt="instragram-img"></a></li>
+									<li><a href="assets/images/instragram/07.jpg" data-rel="lightcase"><img src="assets/images/instragram/07.jpg" alt="instragram-img"></a></li>
+									<li><a href="assets/images/instragram/08.jpg" data-rel="lightcase"><img src="assets/images/instragram/08.jpg" alt="instragram-img"></a></li>
+									<li><a href="assets/images/instragram/09.jpg" data-rel="lightcase"><img src="assets/images/instragram/09.jpg" alt="instragram-img"></a></li>
+								</ul>
+							</div>
+
+							<div class="widget widget-archive">
+								<div class="widget-header">
+									<h5>Our Archive</h5>
+								</div>
+								<ul class="lab-ul widget-wrapper list-bg-none">
+									<li>
+										<a href="#" class="d-flex flex-wrap justify-content-between"><span><i class="icofont-ui-calendar"></i>January</span><span>2021</span></a>
+									</li>
+									<li>
+										<a href="#" class="d-flex flex-wrap justify-content-between"><span><i class="icofont-ui-calendar"></i>February</span><span>2021</span></a>
+									</li>
+									<li>
+										<a href="#" class="d-flex flex-wrap justify-content-between"><span><i class="icofont-ui-calendar"></i>March</span><span>2019</span></a>
+									</li>
+									<li>
+										<a href="#" class="d-flex flex-wrap justify-content-between"><span><i class="icofont-ui-calendar"></i>August</span><span>2021</span></a>
+									</li>
+									<li>
+										<a href="#" class="d-flex flex-wrap justify-content-between"><span><i class="icofont-ui-calendar"></i>September</span><span>2017</span></a>
+									</li>
+									<li>
+										<a href="#" class="d-flex flex-wrap justify-content-between"><span><i class="icofont-ui-calendar"></i>October</span><span>2016</span></a>
+									</li>
+									<li>
+										<a href="#" class="d-flex flex-wrap justify-content-between"><span><i class="icofont-ui-calendar"></i>November</span><span>2014</span></a>
+									</li>
+									<li>
+										<a href="#" class="d-flex flex-wrap justify-content-between"><span><i class="icofont-ui-calendar"></i>December</span><span>2013</span></a>
+									</li>
+								</ul>
+							</div>
+
+							<div class="widget widget-tags">
+								<div class="widget-header">
+									<h5>Our Popular tags</h5>
+								</div>
+								<ul class="lab-ul widget-wrapper">
+									<li><a href="#">envato</a></li>
+									<li><a href="#">themeforest</a></li>
+									<li><a href="#">codecanyon</a></li>
+									<li><a href="#">videohive</a></li>
+									<li><a href="#">audiojungle</a></li>
+									<li><a href="#">3docean</a></li>
+									<li><a href="#">envato</a></li>
+									<li><a href="#">themeforest</a></li>
+									<li><a href="#">codecanyon</a></li>
+								</ul>
+							</div>
+						</aside>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- ===========Blog Section Ends Here========== -->
+{% endblock %}
